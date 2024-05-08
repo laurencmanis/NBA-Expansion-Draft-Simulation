@@ -243,6 +243,8 @@ team_wins_summ <- team_wins_long %>%
   group_by(n) %>%
   summarise(
     stdev = sd(wins),
+    minw = min(wins),
+    maxw = max(wins),
     under_41 = sum(wins <= 41),
     over_41 = sum(wins > 41),
     pct_over = over_41 / (over_41 + under_41),
@@ -286,6 +288,8 @@ player_cluster_summ <- player_summ %>%
   group_by(n, cluster_id) %>%
   summarise(mean_cluster_players = round(mean(cluster_players)))
 
+player_cluster_summ %>% pivot_wider(names_from = cluster_id, values_from = mean_cluster_players)
+
 ########################################## 6.3.1 VISUALIZATIONS #######################################
 #######################################################################################################
 
@@ -316,8 +320,8 @@ ggplot(team_wins_long, aes(x = n, y = wins, fill = n)) +
 
 # Plot the distribution of wins for each N
 ggplot(team_wins_long, aes(x = wins)) +
-  geom_histogram(aes(y = ..density..), bins = 5, fill = "#F1C3CB", color = "#D64C62") +  
-  geom_density(aes(y = ..density..), color = "black", linewidth = 0.5) + 
+  geom_histogram(aes(y = ..density..), bins = 8, fill = "#F1C3CB", color = "#E48897") +  
+  geom_density(aes(y = ..density..), color = "#C8102E", linewidth = 0.9) + 
   facet_wrap(~ n, scales = "fixed") +  
   labs(
     x = "Mean Wins",
@@ -329,7 +333,8 @@ ggplot(team_wins_long, aes(x = wins)) +
     strip.background = element_blank(), 
     strip.text = element_text(face = "bold", size=14),  
     plot.title = element_text(hjust = 0.5, face = "bold", size = 16),  
-    panel.grid.minor = element_blank()  
+    panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank()
   )
 
 
@@ -349,6 +354,7 @@ ggplot(player_cluster_summ, aes(x = as.factor(cluster_id), y = mean_cluster_play
     plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
     legend.position = "none",
     panel.grid.minor = element_blank(),
+    panel.grid.major = element_blank()
   ) 
 
 
@@ -374,8 +380,32 @@ ggplot(long_dat, aes(x = factor(n), y = wins, fill = team)) +
     axis.title.x = element_text(face = "bold", size = 12),
     axis.title.y = element_text(face = "bold", size = 12),
     legend.title = element_blank(),
+    panel.grid.major = element_blank(),
     legend.position = "top",
     legend.text = element_text(size = 12) 
+  )
+
+# Available players from the top 4 clusters for each N
+avail_players <- player_details_df %>% 
+  filter(Team == 'Team A' | Team == 'Team B', cluster_id < 5) %>% 
+  group_by(n) %>% 
+  summarise(players_sum = n_distinct(Player))
+
+ggplot(avail_players, aes(x = factor(n), y = players_sum)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.9), fill='#8EA1C5', color='#1D428A') + 
+  labs(
+    x = "N (Number of Protected Players)",
+    y = "Available Players",
+    title = "Total Available Players From the Top 4 Clusters"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
+    axis.title.x = element_text(face = "bold", size = 12),
+    axis.title.y = element_text(face = "bold", size = 12),
+    legend.title = element_blank(),
+    panel.grid.major = element_blank(),
+    legend.position = "none"
   )
 
 
@@ -403,6 +433,3 @@ teamb <- draft_results$`Team B`     # Notable Players: Quentin Grimes, Al Horfor
 
 teama %>% group_by(cluster_id) %>% summarise(players = n())   # Min Cluster = 4, Cluster 4 Players: 6
 teamb %>% group_by(cluster_id) %>% summarise(players = n())   # Min Cluster = 4, Cluster 4 Players: 5
-
-
-
