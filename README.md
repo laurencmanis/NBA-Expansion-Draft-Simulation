@@ -3,17 +3,17 @@
 ## Project Overview
 This project was developed as my capstone for the NBA Future Analytics Stars program. It aims to determine the optimal number of players each existing NBA franchise should be permitted to protect in an expansion draft scenario that introduces two new teams. The primary goal is to develop a framework that maximizes competitive balance across the league.
 
-### Defining Competitive Balance:
+### Defining Competitive Balance
 Competitive balance is defined in this project as a scenario where:
 - The majority of teams achieve or surpass the average number of wins.
 - There is a balanced number of teams with winning and losing records.
 - The gap between the strongest and weakest teams is minimal.
 - Talent distribution is equitable across all teams, ensuring that expansion teams have a viable chance of achieving the mean number of wins.
 
-## Research and Methodology:
+## Research and Methodology
 The structural framework for the expansion draft was influenced by various historical precedents, including the 2004 Charlotte Bobcats NBA expansion, the most recent in NBA history. Additional insights were drawn from the G League, WNBA, and recent NHL expansion drafts to tailor the rules applicable to the NBA's current context, where teams can have up to 15 players on their rosters, compared to the 12 during the last NBA expansion. Scenarios were tested where teams could protect between 6 to 11 players, considering the introduction of two new teams and the risk of losing up to two players per existing team.
 
-## Conclusion:
+## Results
 The analysis concluded that the optimal number of protected players for each NBA team in an expansion draft should be seven (7) to best preserve competitive balance across the league.
 
 Further details on the expansion draft structure, rules, assumptions, and methodologies are thoroughly documented in the accompanying PDF slide deck.
@@ -24,7 +24,7 @@ Further details on the expansion draft structure, rules, assumptions, and method
 - Directly downloaded additional data sets from Basketball Reference.
 - Gathered information on free agents from HoopsHype.
 
-### Modeling Approach:
+### Modeling Approach
 1. Player Clustering: Employed k-means clustering to categorize players into performance-based tiers.
 2. Team Win Projections: Developed a regression model to predict the percentage of total available wins attributed to each team in a season.
 3. Simulation Functions: Defined functions to simulate player protections for existing teams and the selection process in the expansion draft.
@@ -32,13 +32,13 @@ Further details on the expansion draft structure, rules, assumptions, and method
 5. Comprehensive Simulations: Conducted 1,000 simulations for each potential number of protected players (N=6 to N=11), assessing outcomes of the expansion draft.
 Results
 
-## Optimal Protection Strategy (N=7):
+## Optimal Protection Strategy (N=7)
 - Competitive Balance: Achieved the smallest range of projected wins, indicating a tight distribution of competitive capabilities across the league.
 - Expansion Team Success: Ensured that expansion team wins were close to the league mean.
 - Balanced Records: Generated an equal or larger number of teams with records above and below a .500 winning percentage.
 - Talent Distribution: Minimized the number of teams with more than three players from the lowest clusters (7 and 8), promoting a balanced distribution of talent.
 
-### Visual Analysis:
+### Visual Analysis
 Examined comprehensive statistical visualizations, including box plots, histograms, distributions, and bar plots (available in the visualizations folder), to determine that the optimal value of N is 7.
 
 ## Future Improvements
