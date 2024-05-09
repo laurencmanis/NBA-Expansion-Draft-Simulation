@@ -25,11 +25,11 @@ Further details on the expansion draft structure, rules, assumptions, and method
 - Gathered information on free agents from HoopsHype.
 
 ### Modeling Approach
-1. Player Clustering: Employed k-means clustering to categorize players into performance-based tiers.
-2. Team Win Projections: Developed a regression model to predict the percentage of total available wins attributed to each team in a season.
-3. Simulation Functions: Defined functions to simulate player protections for existing teams and the selection process in the expansion draft.
-4. Statistical Framework: Created a framework to project and scale team total per-game stats, which were input into the win projections model.
-5. Comprehensive Simulations: Conducted 1,000 simulations for each potential number of protected players (N=6 to N=11), assessing outcomes of the expansion draft.
+1. **Player Clustering**: Employed k-means clustering to categorize players into performance-based tiers.
+2. **Team Win Projections**: Developed a regression model to predict the percentage of total available wins attributed to each team in a season.
+3. **Simulation Functions**: Defined functions to simulate player protections for existing teams and the selection process in the expansion draft.
+4. **Statistical Framework**: Created a framework to project and scale team total per-game stats, which were input into the win projections model.
+5. **Comprehensive Simulations**: Conducted 1,000 simulations for each potential number of protected players (N=6 to N=11), assessing outcomes of the expansion draft.
 Results
 
 ## Optimal Protection Strategy (N=7)
@@ -49,6 +49,6 @@ Next Steps in Project Development:
 - Assess Long-Term Competitive Balance: Evaluate the impact on competitive balance over an extended period, such as three or five seasons, to gauge sustained effects.
 
 ## Acknowledgements
-HoopR: Special thanks to Saiem Gilani and all contributors to the HoopR package from the SportsDataverse, which was instrumental in accessing and analyzing NBA data for this project. HoopR: The SportsDataverse's R Package for Men's Basketball Data.
+**HoopR**: Special thanks to Saiem Gilani and all contributors to the HoopR package from the SportsDataverse, which was instrumental in accessing and analyzing NBA data for this project. HoopR: The SportsDataverse's R Package for Men's Basketball Data.
 
-The NBA & NBA Future Analytics Stars Program: I am grateful to the NBA and all the mentors and participants in the Future Analytics Stars program for providing me with this incredible opportunity to develop and showcase my project.
+**The NBA & NBA Future Analytics Stars Program**: I am grateful to the NBA and all the mentors and participants in the Future Analytics Stars program for providing me with this incredible opportunity to develop and showcase my project.
